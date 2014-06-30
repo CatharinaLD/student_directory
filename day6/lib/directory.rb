@@ -7,7 +7,7 @@ def print_students
 end
 
 def students
-	# [{name:'Zoe'}, {name:'Anna'}, {name:'Catharina'}]
+	#[{name:'Zoe'}, {name:'Anna'}, {name:'Catharina'}]
 	@students ||= []
 end
 
@@ -17,4 +17,16 @@ end
 
 def add(student)
 	students << student
+end
+
+def ask_name 
+	puts 'Please enter your name'	
+end
+
+def get_name
+	gets.chomp
+end
+
+	def print_footer
+	puts "Overall, we have #{students.length} students."
 end

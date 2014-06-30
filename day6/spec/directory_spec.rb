@@ -10,10 +10,26 @@ describe "student directory" do
 		expect(students).to be_empty
 	end
 
+	it 'ask for a new student' do
+		expect(self).to receive(:puts).with('Please enter your name')
+		ask_name
+	end
+
+	it 'gets new student input' do
+		input = 'Zoe'
+		expect(self).to receive(:gets).and_return(input)
+		expect(get_name).to eq 'Zoe'
+	end
+
 	it 'can add a student' do
 		student = {name: 'Zoe'}
 		add(student)
 		expect(students).to eq [student]
+	end
+
+	it 'prints footer' do
+		expect(self).to receive(:puts).with("Overall, we have #{students.length} students.")
+		print_footer
 	end
 
 	context 'with three students' do
@@ -31,6 +47,11 @@ describe "student directory" do
 		it 'prints students' do
 			expect(self).to receive(:puts).with(student_names.join(', '))
 			print_students
+		end
+
+		it 'prints footer with right number of students' do
+			expect(self).to receive(:puts).with("Overall, we have #{students.length} students.")
+			print_footer
 		end
 	end
 
